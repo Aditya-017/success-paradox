@@ -8,7 +8,6 @@ public class Experiment {
 
         List<Person> sample = sampleGenerator.generateSamples(sampleSize);
 
-        Collections.sort(sample, Comparator.comparing(Person::getTotalScore).reversed());
         List<Person> selectedPeople = getSelection(sample, selectionNumber);
 
         // Calculating average luck and skill score for selected people
@@ -35,7 +34,7 @@ public class Experiment {
     }
 
     private static List<Person> getSelectionOnSkillsAlone(List<Person> sample, int selectionNumber){
-        Collections.sort(sample, Comparator.comparing(Person::getWeightedSkillScore).reversed());
+        Collections.sort(sample, Comparator.comparing(Person::getSkillScore).reversed());
         List<Person> selected= new ArrayList<>();
         for(int i =0;i<selectionNumber; ++i){
             Person person = sample.get(i);
